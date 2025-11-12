@@ -15,27 +15,29 @@ public class Aluno {
         this("", "", new double[0]);
     }
 
-    public String getNome(String nome) {
+    public String getNome() {
         return this.nome;
     }
 
-    public String getMatricula(String matricula) {
+    public String getMatricula() {
         return matricula;
     }
 
-    public double getMedia(double[] notas) {
-        double media = 0;
+    public double getMedia() {
+        if (notas == null || notas.length == 0) return 0;
 
-        for(int n = 0; n < notas.length; n++) {
-            media += notas[n];
+        double soma = 0;
+
+        for(double n : notas) {
+            soma += n;
         }
-        media = media / notas.length;
-        return media;
+
+        return soma / notas.length;
     }
 
     @Override
     public String toString() {
-        return "O aluno " + this.nome + " de matrícula " + this.matricula + " tem média: " + getMedia(notas);
+        return "O aluno " + this.nome + " de matrícula " + this.matricula + " tem média: " + String.format("%.2f", getMedia());
     }
 
 }
