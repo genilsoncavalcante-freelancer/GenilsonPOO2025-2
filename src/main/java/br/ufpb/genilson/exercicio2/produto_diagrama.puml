@@ -1,0 +1,34 @@
+@startuml
+package br.ufpb.genilson.produtos {
+  class Produto {
+    - static int proximoId
+    - final int id
+    - String nome
+    - int estoque
+    - String dataDeFabricacao
+    - String dataDeValidade
+    - String categoria
+    + Produto(String, int, String, String, String)
+    + int getId()
+    + void atualizarEstoque(int) throws EstoqueInsuficienteException
+    + boolean estaEmPromocao()
+    + String toString()
+    + equals()
+    + hashCode()
+  }
+
+  class SistemaGerenciadorDeProdutos {
+    - List<Produto> produtos
+    + adicionarProduto(Produto) throws ProdutoDuplicadoException
+    + removerProdutoPorId(int) : boolean
+    + buscarPorId(int) : Produto
+    + listarTodos() : List<Produto>
+    + atualizarEstoque(int,int) throws EstoqueInsuficienteException
+  }
+
+  class ProdutoDuplicadoException
+  class EstoqueInsuficienteException
+
+  Produto "1" -- "0..*" SistemaGerenciadorDeProdutos : manages
+}
+@enduml
