@@ -7,7 +7,7 @@ import java.util.Objects;
  * O id é gerado automaticamente e é imutável.
  */
 public class Produto {
-    private static int proximoId = 1; // auto-increment simples
+    private static int proximoId = 1; // auto-increment
 
     private final int id;
     private String nome;
@@ -16,7 +16,6 @@ public class Produto {
     private String dataDeValidade;
     private String categoria;
 
-    // Construtor principal (não recebe id; id é atribuído automaticamente)
     public Produto(String nome, int estoque, String dataDeFabricacao, String dataDeValidade, String categoria) {
         this.id = proximoId++;
         this.nome = nome;
@@ -31,7 +30,8 @@ public class Produto {
         this("", 0, "", "", "");
     }
 
-    // Getters (id não tem setter pois é imutável)
+    //Getters
+    // OBS: (id não tem setter pois é imutável)
     public int getId() {
         return id;
     }
@@ -82,7 +82,7 @@ public class Produto {
      * Se a operação resultar em estoque negativo, lança EstoqueInsuficienteException.
      *
      * @param quantidade quantidade a adicionar (pode ser negativa para retirada)
-     * @throws EstoqueInsuficienteException se estoque ficaria negativo
+     * @throws EstoqueInsuficienteException se estoque ficar negativo
      */
     public void atualizarEstoque(int quantidade) throws EstoqueInsuficienteException {
         int novoEstoque = this.estoque + quantidade;
@@ -93,8 +93,6 @@ public class Produto {
     }
 
     /**
-     * Exemplo simples de regra de promoção.
-     * Você pode ajustar a regra conforme desejar.
      * Aqui: se a categoria contém "promo" (case-insensitive) retorna true.
      *
      * @return true se estiver em promoção

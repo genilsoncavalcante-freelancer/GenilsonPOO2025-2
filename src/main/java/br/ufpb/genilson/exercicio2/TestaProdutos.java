@@ -16,9 +16,12 @@ public class TestaProdutos {
         Scanner sc = new Scanner(System.in);
         SistemaGerenciadorDeProdutos sistema = new SistemaGerenciadorDeProdutos();
 
-        System.out.println("=== Cadastro de 3 produtos ===");
+        System.out.println("=== Cadastro de produtos ===");
+        System.out.println("Quantos produtos deseja cadastrar? ");
+        int qtdDeProdutos = sc.nextInt();
+        sc.nextLine(); // <-- CORREÇÃO IMPORTANTE
 
-        int produtosParaCadastrar = 3;
+        int produtosParaCadastrar = qtdDeProdutos;
         for (int i = 0; i < produtosParaCadastrar; i++) {
             System.out.println("\nProduto " + (i + 1) + ":");
             try {
