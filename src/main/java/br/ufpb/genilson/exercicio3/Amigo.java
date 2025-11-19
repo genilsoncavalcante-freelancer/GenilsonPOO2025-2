@@ -19,7 +19,7 @@ public class Amigo {
         this.nome = nome;
     }
 
-    public String email() {
+    public String getEmail() {
         return email;
     }
 
